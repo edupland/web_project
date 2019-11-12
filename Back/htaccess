@@ -1,0 +1,4 @@
+SetEnvIfNoCase Referer "http://projet/" local_referal
+Order Deny,Allow
+Deny From All
+Allow from env=local_referal

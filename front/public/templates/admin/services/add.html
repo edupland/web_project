@@ -1,0 +1,75 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="addServiceAdminCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-plus-sign"></span> Nouveau Service
+    </div>
+    <div class="panel-body">
+        <div uib-alert class="alert-danger" type="danger" ng-if="addServiceAdminCtrl.error">
+            <errors errors="addServiceAdminCtrl.error"></errors>
+        </div>
+        <form id="addservice" role="form" name="addservice" ng-submit="addServiceAdminCtrl.submit()">
+       <div class="form-group">
+                <input type="text" required ng-model="addServiceAdminCtrl.service.name" class="form-control" title="Nom du Service" name="nom" placeholder="Nom du Service">
+            </div>
+	 <div class="form-group">		      
+	 <label for="type">Type du service :</label>
+	 
+	 <select  id="type" ng-model="addServiceAdminCtrl.service.type"  class="form-control" >
+		<option value="">--</option>
+        <option ng-repeat="option in addServiceAdminCtrl.typeServices" value="{{option.service_name_id}}">{{option.service_name_text}}</option>
+    </select></div>
+       <div class="form-group">
+                <input type="email" required ng-model="addServiceAdminCtrl.service.mail" class="form-control" title="Email de contact" name="mail" placeholder="Email de contact">
+            </div>
+			<div class="form-group">
+<input type="text" ng-model="addServiceAdminCtrl.service.address" placeholder="Adresse" uib-typeahead="address for address in addServiceAdminCtrl.loadadr($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+    <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> Pas de résultats
+    </div>
+            </div>
+			<div class="form-group">
+                <input type="text" required ng-model="addServiceAdminCtrl.service.tph" class="form-control" title="Telephone" name="tph" placeholder="Telephone">
+            </div>
+			            <div class="form-group">
+                <textarea type="textaera" required ng-model="addServiceAdminCtrl.service.description" class="form-control" title="Description" name="description" placeholder="Description"></textarea>
+            </div>
+			<div class="form-group">
+			<h4>Horaires</h4>
+			Lundi : 				<ul><li><p>Matin : Ouverture<input type="time" name="lmol" ng-model="lmol" ng-change="addServiceAdminCtrl.service.lmo=lmol"> 
+													   Fermeture<input type="time" name="lmfl" ng-model="lmfl" ng-change="addServiceAdminCtrl.service.lmf=lmfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="lamfl" ng-model="lamol" ng-change="addServiceAdminCtrl.service.lamo=lamol"> 
+													Fermeture<input type="time" name="lamfl" ng-model="lamfl" ng-change="addServiceAdminCtrl.service.lamf=lamfl"></p></li></ul>
+			Mardi : 				<ul><li><p>Matin : Ouverture<input type="time" name="mmol" ng-model="mmol" ng-change="addServiceAdminCtrl.service.mmo=mmol"> 
+													   Fermeture<input type="time" name="mmfl" ng-model="mmfl" ng-change="addServiceAdminCtrl.service.mmf=mmfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="mamfl" ng-model="mamol" ng-change="addServiceAdminCtrl.service.mamo=mamol"> 
+													Fermeture<input type="time" name="mamfl" ng-model="mamfl" ng-change="addServiceAdminCtrl.service.mamf=mamfl"></p></li></ul>
+			Mercredi : 				<ul><li><p>Matin : Ouverture<input type="time" name="memol" ng-model="memol" ng-change="addServiceAdminCtrl.service.memo=memol"> 
+													   Fermeture<input type="time" name="memfl" ng-model="memfl" ng-change="addServiceAdminCtrl.service.memf=memfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="meamfl" ng-model="meamol" ng-change="addServiceAdminCtrl.service.meamo=meamol"> 
+													Fermeture<input type="time" name="meamfl" ng-model="meamfl" ng-change="addServiceAdminCtrl.service.meamf=meamfl"></p></li></ul>
+			Jeudi : 				<ul><li><p>Matin : Ouverture<input type="time" name="jmol" ng-model="jmol" ng-change="addServiceAdminCtrl.service.jmo=jmol"> 
+													   Fermeture<input type="time" name="jmfl" ng-model="jmfl" ng-change="addServiceAdminCtrl.service.jmf=jmfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="jamfl" ng-model="jamol" ng-change="addServiceAdminCtrl.service.jamo=jamol"> 
+													Fermeture<input type="time" name="jamfl" ng-model="jamfl" ng-change="addServiceAdminCtrl.service.jamf=jamfl"></p></li></ul>
+			Vendredi : 				<ul><li><p>Matin : Ouverture<input type="time" name="vmol" ng-model="vmol" ng-change="addServiceAdminCtrl.service.vmo=vmol"> 
+													   Fermeture<input type="time" name="vmfl" ng-model="vmfl" ng-change="addServiceAdminCtrl.service.vmf=vmfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="vamfl" ng-model="vamol" ng-change="addServiceAdminCtrl.service.vamo=vamol"> 
+													Fermeture<input type="time" name="vamfl" ng-model="vamfl" ng-change="addServiceAdminCtrl.service.vamf=vamfl"></p></li></ul>
+			Samedi : 				<ul><li><p>Matin : Ouverture<input type="time" name="smol" ng-model="smol" ng-change="addServiceAdminCtrl.service.smo=smol"> 
+													   Fermeture<input type="time" name="smfl" ng-model="smfl" ng-change="addServiceAdminCtrl.service.smf=smfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="samfl" ng-model="samol" ng-change="addServiceAdminCtrl.service.samo=samol"> 
+													Fermeture<input type="time" name="samfl" ng-model="samfl" ng-change="addServiceAdminCtrl.service.samf=samfl"></p></li></ul>
+			Dimanche : 				<ul><li><p>Matin : Ouverture<input type="time" name="dmol" ng-model="dmol" ng-change="addServiceAdminCtrl.service.dmo=dmol"> 
+													   Fermeture<input type="time" name="dmfl" ng-model="dmfl" ng-change="addServiceAdminCtrl.service.dmf=dmfl"></p></li> 
+										<li><p>AM : Ouverture<input type="time" name="damfl" ng-model="damol" ng-change="addServiceAdminCtrl.service.damo=damol"> 
+													Fermeture<input type="time" name="damfl" ng-model="damfl" ng-change="addServiceAdminCtrl.service.damf=damfl"></p></li></ul>
+
+			</div>
+		  <div>
+                <button type="submit"  class="btn btn-info center-block">valider</button>
+            </div>
+		
+        </form>
+    </div>
+</div>

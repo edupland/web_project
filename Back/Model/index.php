@@ -1,0 +1,74 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: oknax
+ * Date: 09/02/2018
+ * Time: 14:58
+ */
+
+class ModelTools
+{
+    public static function bdd()
+    {
+        try {
+            $bdd = new \PDO('mysql:host=dbserver;dbname=edupland' , 'edupland', 'dupland');
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+        return $bdd;
+    }
+    public static function encryptData($text,$id,$column)
+    {
+        $key = "b2251b8fe7b1354297677cf12283aca0ec8613977036";
+        $key = $key.$id.$column;
+        $method = "AES-256-CBC";
+        $iv_size = mcrypt_get_iv_size(MCRYPT_CAST_256, MCRYPT_MODE_CBC);
+        $iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
+
+        $encrypted = openssl_encrypt($text, $method, $key, 0, $iv);
+
+        return base64_encode($iv . $encrypted);
+    }
+
+    public static function decryptData($text,$id,$column)
+    {
+		$key = "b2251b8fe7b1354297677cf12283aca0ec8613977036";
+        $key = $key.$id.$column;
+        $text = base64_decode($text);
+
+        $method = "AES-256-CBC";
+        $iv_size = mcrypt_get_iv_size(MCRYPT_CAST_256, MCRYPT_MODE_CBC);
+        $iv = substr($text, 0, $iv_size);
+
+        return openssl_decrypt(substr($text, $iv_size), $method, $key, 0, $iv);
+    }
+    public static function token(){
+        $string = "";
+        $chaine = "a0b1c2d3e4f5g6h7i8j9klmnpqrstuvwxy123456789";
+        srand((double)microtime()*1000000);
+        for($i=0; $i<25; $i++){
+            $string .= $chaine[rand()%strlen($chaine)];
+        }
+        return $string;
+    }
+
+    public static function  UpdateToken($id){
+
+        $bdd=ModelTools::bdd();
+
+        $token = ModelTools::token();
+        $reqb = $bdd->prepare('UPDATE user set token=:tk WHERE id=:id ');
+        $reqb->execute(array(
+            'tk' => $token,
+            'id' => $id,
+        ));
+        return $token;
+    }
+}
+require_once("UserModel.php");
+require_once("FaqModel.php");
+require_once("AccessRightModel.php");
+require_once ("FormModel.php");
+require_once ("ServicesModel.php");
+require_once("AnnonceModel.php");
+require_once ("MessageModel.php");

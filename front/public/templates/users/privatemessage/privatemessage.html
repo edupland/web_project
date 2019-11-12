@@ -1,0 +1,65 @@
+<h2 class="panel-heading-title"><span class="glyphicon glyphicon-envelope">&nbsp;</span>Messagerie</h2>
+<div id="frame">
+  <div id="sidepanel">
+    <div id="search">
+      <label for=""><i class="glyphicon glyphicon-search" aria-hidden="true"></i></label>
+      							<input ng-required="true" class="form-control" title="Recherche" name="Recherche"  
+									ng-model="compteRenduCtrl.compteRendu.lieuObjMission"
+									placeholder="Rechercher des contacts ...."
+									typeahead-editable="false"
+									uib-typeahead="user as users.user_pseudo for users in privatemessageCtrl.userssearch($viewValue)"
+									autocomplete="off" 
+							/>
+    </div>
+    <div id="contacts">
+      <ul  ng-repeat="users in privatemessageCtrl.users">
+        <tr>
+          <td>
+            <li class="contact" ng-click="privatemessageCtrl.get(users)">
+              <div class="wrap" >
+                <div class="meta">
+                  <p class="name">  <span ng-if="!users.image" class="glyphicon glyphicon-user"></span>
+                    <img ng-if="users.image" id="img" class="crop " ng-src="{{users.image}}" alt="{{users.user_pseudo}}">
+                    {{users.user_pseudo}}</p>
+                </div>
+              </div>
+            </li>
+          </td>
+        </tr>
+      </ul>
+    </div>
+  </div>
+  <div ng-if="!privatemessageCtrl.message.user" class="content">
+    <div  class="contact-profile">
+               <p>Cliquez sur un contact dans le panneau à droite</p>
+    </div>
+	</div>
+  <div ng-if="privatemessageCtrl.message.user" class="content">
+    <div  class="contact-profile">
+                  <p class="name">  <span ng-if="!privatemessageCtrl.message.user.image" class="glyphicon glyphicon-user"></span>
+                    <img ng-if="privatemessageCtrl.message.user.image" id="img" class="crop " ng-src="{{privatemessageCtrl.message.user.image}}" alt="{{privatemessageCtrl.message.user.user_pseudo}}">
+                    {{privatemessageCtrl.message.user.user_pseudo}}</p>
+      <p></p>
+    </div>
+    <div class="messages">
+      <ul><table>
+        <tr ng-repeat="message in privatemessageCtrl.message.content">
+          <td>
+            <li ng-if="message.ex==1" class="sent">
+              <p>{{message.messagerie_contenue}}</p>
+            </li>
+            <li ng-if="message.ex!==1" class="replies">
+              <p>{{message.messagerie_contenue}}</p>
+            </li>
+          </td>
+        </tr></table>
+      </ul>
+    </div>
+    <div class="message-input">
+      <div class="wrap">
+      <input type="text" ng-model="privatemessageCtrl.message.send" placeholder="Ecrivez votre message" />
+      <button class="submit" ng-click="privatemessageCtrl.send()"><i class="glyphicon glyphicon-send" aria-hidden="true" ></i></button>
+      </div>
+    </div>
+  </div>
+</div>

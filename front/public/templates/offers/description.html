@@ -1,0 +1,24 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="descriptionOffersCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-list-alt"></span> {{descriptionOffersCtrl.offer.title}}
+    </div>
+    <div class="panel-body">
+    	<h4>Description :</h4>
+    	{{descriptionOffersCtrl.offer.description}}
+
+    	<h4>Prix :</h4>
+    	<div ng-if="descriptionOffersCtrl.offer.price > 0">
+    	{{descriptionOffersCtrl.offer.price}} €
+    	</div>
+    	<div ng-if="descriptionOffersCtrl.offer.price <= 0">
+		Gratuit
+    	</div>
+    	<h4>Nom de l'annonceur :</h4>
+    	{{descriptionOffersCtrl.offer.user}}
+    	<h4>Adresse e-mail :</h4>
+    	{{descriptionOffersCtrl.offer.email}}
+    	<h4>Téléphone :</h4>
+    	{{descriptionOffersCtrl.offer.tph}}
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<header class="heading nav nav--subNav">
+    <h2 class="heading__title pull-left">Liste des utilisateurs</h2>
+</header>
+<section class="content">
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+					<th>Titre</th>
+                    <th>Créateur</th>
+                    <th>Voir</th>
+                    <th>Etat</th>
+                    <th>Valider/remettre en attente</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="annonce in listAnnoncesAdminCtrl.listannonce">
+                    <td>
+                             {{annonce.title}}
+					</td>
+                    <td>
+                            {{annonce.user}}
+                    </td>
+                    <td>
+                       <a ng-click="listAnnoncesAdminCtrl.description(annonce.id)">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </a>
+                    </td>
+                    <td >
+                        <p ng-if="annonce.valid==0">En attente de validation</p>
+                        <p ng-if="annonce.valid==1">En ligne</p>
+                    </td>
+                    <td ng-if="annonce.valid==1">
+                        <a ng-click="annonce.valid=0;listAnnoncesAdminCtrl.modify(annonce)">
+                            <span class="glyphicon glyphicon-repeat"></span>
+                        </a>
+                    </td>
+                    <td ng-if="annonce.valid==0">
+                        <a ng-click="annonce.valid=1;listAnnoncesAdminCtrl.modify(annonce)">
+                            <span class="glyphicon glyphicon-ok"></span>
+                        </a>
+                    </td>
+					   <td >
+                        <a ng-click="annonce.valid=-1;listAnnoncesAdminCtrl.modify(annonce)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td colspan="8">
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="center-block text-center">
+                                    <ul uib-pagination total-items="listAnnoncesAdminCtrl.page.pageable.totalElements" ng-model="listAnnoncesAdminCtrl.page.pageable.numPage" items-per-page="listAnnoncesAdminCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="listAnnoncesAdminCtrl.page.pageable.totalPages"
+                                        ng-click="listAnnoncesAdminCtrl.init()"></ul>
+                                </div>
+                            </div>
+                            <div class="col-md-3 form-inline">
+                                <div class="form-group pull-right">
+                                    <label for="nbEltUser">Nb éléments :</label>
+                                    <div class="form-control">
+                                        <select id="nbEltUser" ng-model="listAnnoncesAdminCtrl.page.pageable.nbElt" class="form-select" ng-change="listAnnoncesAdminCtrl.init()">
+                                            <option value="10">10</option>
+                                            <option value="20">20</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</section>

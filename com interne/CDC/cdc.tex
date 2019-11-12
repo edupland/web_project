@@ -1,0 +1,103 @@
+\documentclass[12]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{listings}
+\usepackage{hyperref} %Pour faire des liens hypertexte dans la table des matières
+\usepackage{graphicx}
+
+\hypersetup{ %Paramètres pour les liens hypertextes
+	colorlinks=true,
+	linktoc=all,
+	linkcolor=blue,
+}
+
+\title{Projet Technologique  \\ Cahier des charges fonctionnel}
+\author{Bortoluzzi Yann \\ Dupland Erwan \\ Javel Adrien \\ Martineau Flavien}
+
+
+\begin{document}
+\renewcommand{\chaptername}{Partie}
+\renewcommand{\contentsname}{Sommaire}
+
+\maketitle
+\tableofcontents
+
+
+    \chapter{\underline{Présentation}}
+
+        \section{Introduction}
+
+        Beaucoup de personnes ne savent pas comment utiliser un site web, en particulier les personnes agées qui n'ont pas suivi les avancées technologiques et d'autres personnes n'ont pas accès aux sites web comme les personnes handicapées.
+        En effet, beaucoup de personnes agées n'ont pas de sites qui leurs sont dédiés et les personnes handicapées non plus.
+
+        \section{Objectifs}
+
+        L'objectif initial du client est de pouvoir fournir un espace en ligne pour mettre des personnes âgées ou en situation de handicap de pouvoir être facilement mis en relation avec des services qui leur seront adaptés.
+
+        \section{Séparation des tâches}
+
+        Nous avons séparé le travail en deux groupes : du côté de l'utilisateur (front) et du côté du serveur (back). Nous avons donc séparé le groupe en deux.
+        Le back respecte le modèle mvc (model, view, controller).
+
+        
+
+    \chapter{\underline{Expression des besoins}}
+    \section{Besoins fonctionnels}
+
+    \begin{itemize}
+        \item Mettre en place une base de données qui contiendra l'ensemble des services ainsi que l'ensemble des utilisateurs du site. Ces services seront accessibles pour l'utilisateur qui pourra faire des recherches en fonction de son besoin. Les services seront également visibles sur une carte de la ville. L'utilisateur pourra obtenir des informations comme le numéro de téléphone du service ou ses horaires. Ceci fonctionnera comme un annuaire.
+        \item Créer un espace de forum et regrouper les question les plus posées dans une F.A.Q.
+        \item Avoir un fil d'annonces, ceux-ci seront similaires à la carte des services mais seront ajoutés par les utilisateurs.
+        \item Les utilisateurs disposent d'une messagerie privée afin de communiquer avec d'autres utilisateurs ou à des modérateurs.
+        \item Le site doit avoir une interface assez simpliste, pas trop chargée afin de permettre une navigation plus aisée. La navigation doit également être intuitive.
+        \item Disposer d'une interface pour les modérateurs afin de pouvoir modifier facilement la base de données en ayant aucune notion de SQL bien évidemment.
+        \item Permettre aux modérateurs de supprimer du contenu publié sur le site.
+    \end{itemize}
+
+
+        \section{Besoins non fonctionnels}
+        Le client a exprimé les besoins suivants :
+            \begin{itemize}
+                \vspace{\baselineskip}
+                \item Regrouper l'ensemble des services (loisirs, soins infirmiers, aides à domiciles) afin d'y accéder facilement.
+
+                Pour cela, nous allons créer un espace \textit{carte des services} qui permet aus utilisateurs de pouvoir voir et sélectionner les différentes activitées proposer par la ville.
+
+                \vspace{\baselineskip}
+                \item Permettre aux personnes âgées ou leurs familles de poser des questions dans un espace dédié.
+
+                Pour cela, nous allons créer un espace \textit{foire aux questions} qui permet à plusieurs personnes de discuter afin de partager les difféerentes expériences qu'ils ont vécu.
+
+                \vspace{\baselineskip}
+                \item Regrouper les questions les plus posées par les utilisateurs.
+
+                Pour cela, nous allons créer un espace \textit{forum} qui permet aux utilisateurs de voir les questions les plus posées par les autres utilisateurs.
+                Il a aussi l'occasion de pouvoir répondre aux questions pour informer les autres utilisateurs.
+
+                \vspace{\baselineskip}
+                \item Créer un espace permettant aux habitants de la commune de publier des annonces pour s'investir dans le bénévolat ou pour divers aides associatives.
+
+                Pour cela, nous allons créer un espace \textit{petites annonces} qui permet aux utilisateurs soit de poster une annonce, soit de répondre à une annonce qui lui correspond.
+
+                \vspace{\baselineskip}
+                \item Avoir un site accessible pour des personnes peu à l'aise avec un ordinateur.
+
+                Pour cela, nous allons fait un site facile d'utilisation, qui guide les personnes peu à l'aise avec l'informatique.
+
+                \vspace{\baselineskip}
+                \item Permettre au client de modérer les utilisateurs du site ainsi que tout le contenu présent sur le site.
+
+                \vspace{\baselineskip}
+                \item Permettre au client de pouvoir ajouter/supprimer des services et/ou des utilisateurs facilement.
+            \end{itemize}
+
+
+            \begin{figure}
+            \hfill\includegraphics[width=1\textwidth]{schema-cas-utilisation.jpg}\hspace*{\fill}
+            \caption{Cas d'utilisation}\label{fig1}
+
+          La figure \ref{fig1} montre un cas d'utilisation répondant aux besoins du client. Le serveur qui héberge la base de données, fait le lien entre le client et l'utilisateur. La mairie peu donc modérer les utilisateurs et les contenus publiés. L'utilisateur peut lire et publier des annonces et accéder aux services.
+	        \end{figure}
+
+\end{document}

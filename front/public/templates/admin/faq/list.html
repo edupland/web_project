@@ -1,0 +1,68 @@
+<header class="heading nav nav--subNav">
+    <h2 class="heading__title pull-left">Administration FAQ</h2>
+    <div class="heading__action pull-righ">
+        <button class="btn btn-info btn-sm" ng-click="listFAQAdminCtrl.add()"><span class="glyphicon glyphicon-plus-sign"></span>Ajouter</button>
+    </div>
+</header>
+<section class="content">
+    <div uib-alert type="danger" class="alert-danger" ng-if="listFAQAdminCtrl.error">{{listFAQAdminCtrl.error}}</div>
+    <div uib-alert type="success" class="alert-success" ng-if="listFAQAdminCtrl.suprsuccess">{{listFAQAdminCtrl.suprsuccess}}</div>
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Réponse</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="faq in listFAQAdminCtrl.listFAQ">
+                    <td>
+                        <a href="#" editable-textarea="faq.faq_questions" onaftersave="listFAQAdminCtrl.saveParameter(faq)" title="Modifier le paramètre">
+                            {{faq.faq_questions}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" editable-textarea="faq.faq_answers" onaftersave="listFAQAdminCtrl.saveParameter(faq)" title="Modifier le paramètre">
+                           {{faq.faq_answers}}
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-click="listFAQAdminCtrl.delete(faq)" ng-if="(appCtrl.currentuser.admin)" title="Supprimer la question">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+				     <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div class="center-block text-center">
+                    <ul uib-pagination total-items="listFAQAdminCtrl.page.pageable.totalElements" ng-model="listFAQAdminCtrl.page.pageable.numPage" items-per-page="listFAQAdminCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="listFAQAdminCtrl.page.pageable.totalPages"
+                    ng-click="listFAQAdminCtrl.getfaq()"></ul>
+                  </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                  <div class="form-group pull-right">
+                    <label for="nbEltUser">Nb éléments :</label>
+                    <div class="form-control">
+                      <select id="nbEltUser" ng-model="listFAQAdminCtrl.page.pageable.nbElt" class="form-select" ng-change="listFAQAdminCtrl.getfaq()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+            </table>
+        </div>
+    </div>
+</section>

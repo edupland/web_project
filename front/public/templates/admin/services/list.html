@@ -1,0 +1,71 @@
+<header class="heading nav nav--subNav">
+    <h2 class="heading__title pull-left">Administration Service</h2>
+    <div class="heading__action pull-righ">
+	<button class="btn btn-info btn-sm" ng-click="listServiceAdminCtrl.admintype()"><span class="glyphicon glyphicon-plus-sign"></span>Administrer Type</button>
+        <button class="btn btn-info btn-sm" ng-click="listServiceAdminCtrl.add()"><span class="glyphicon glyphicon-plus-sign"></span>Ajouter</button>
+    </div>
+</header>
+<section class="content">
+    <div uib-alert type="danger" class="alert-danger" ng-if="listServiceAdminCtrl.error">{{listServiceAdminCtrl.error}}</div>
+    <div uib-alert type="success" class="alert-success" ng-if="listServiceAdminCtrl.suprsuccess">{{listServiceAdminCtrl.suprsuccess}}</div>
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nom du service</th>
+                    <th>Type du service</th>
+					<th>Voir/modifier</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="service in listServiceAdminCtrl.listservices">
+                    <td>
+                            {{service.message}}
+                    </td>
+                    <td>
+                           {{service.service_name_text}}
+                    </td>
+					<td>
+                        <a ng-click="listServiceAdminCtrl.modif(service.service_id)" ng-if="(appCtrl.currentuser.admin)" title="Modifier">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-click="listServiceAdminCtrl.delete(service.service_id)" ng-if="(appCtrl.currentuser.admin)" title="Supprimer">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+				     <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div class="center-block text-center">
+                    <ul uib-pagination total-items="listServiceAdminCtrl.page.pageable.totalElements" ng-model="listServiceAdminCtrl.page.pageable.numPage" items-per-page="listServiceAdminCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="listServiceAdminCtrl.page.pageable.totalPages"
+                    ng-click="listServiceAdminCtrl.getfaq()"></ul>
+                  </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                  <div class="form-group pull-right">
+                    <label for="nbEltUser">Nb éléments :</label>
+                    <div class="form-control">
+                      <select id="nbEltUser" ng-model="listServiceAdminCtrl.page.pageable.nbElt" class="form-select" ng-change="listServiceAdminCtrl.getfaq()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+            </table>
+        </div>
+    </div>
+</section>

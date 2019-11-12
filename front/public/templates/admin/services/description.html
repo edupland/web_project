@@ -1,0 +1,83 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="descServiceAdminCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-log-in"></span> {{descServiceAdminCtrl.service.message}}
+    </div>
+    <div class="panel-body">
+        <h4>Télèphone:</h4>               <a href="#" editable-text="descServiceAdminCtrl.service.service_tph" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" >
+                {{descServiceAdminCtrl.service.service_tph|| 'empty'}}
+              </a>
+		<h4>Adresse :</h4>    		<input type="text" ng-model="descServiceAdminCtrl.service.service_address" placeholder="Adresse" uib-typeahead="address for address in descServiceAdminCtrl.loadadr($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+              </a>
+			  <span ng-click="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"> <span class="glyphicon glyphicon-ok"></span></span>
+			      <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+    <div ng-show="noResults">
+      <i class="glyphicon glyphicon-remove"></i> Pas de résultats
+    </div>
+		<h4>Mail:</h4> <a href="#" editable-email="descServiceAdminCtrl.service.service_mail" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)">{{ descServiceAdminCtrl.service.service_mail}}</a>
+					<div class="form-group">
+			<h4>Horaires</h4>
+					Lundi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Lundi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Lundi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Lundi_am_f"onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Lundi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Lundi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Lundi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Lundi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Lundi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>
+					Mardi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Mardi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mardi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Mardi_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mardi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Mardi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mardi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Mardi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mardi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>
+					Mercredi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Mercredi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mercredi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Mercredi_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mercredi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Mercredi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mercredi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Mercredi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Mercredi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>
+					Jeudi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Jeudi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Jeudi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Jeudi_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Jeudi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Jeudi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Jeudi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Jeudi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Jeudi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>									
+					Vendredi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Vendredi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Vendredi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Vendredi_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Vendredi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Vendredi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Vendredi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Vendredi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Vendredi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>
+					Samedi : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Samedi_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Samedi_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Samedi_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Samedi_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Samedi_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Samedi_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Samedi_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Samedi_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>
+					Dimanche : <ul><li><a href="#" editable-bstime="descServiceAdminCtrl.service.Dimanche_am_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Dimanche_am_o | date:"HH:mm") || 'Fermé' }}</a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Dimanche_am_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Dimanche_am_f | date:"HH:mm") || 'Fermé' }}</a></li>
+								<li><a href="#" editable-bstime="descServiceAdminCtrl.service.Dimanche_pm_o" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Dimanche_pm_o | date:"HH:mm") || 'Fermé' }} </a>
+									-	  <a href="#" editable-bstime="descServiceAdminCtrl.service.Dimanche_pm_f" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)"  e-show-meridian="false" e-minute-step="10">
+									{{ (descServiceAdminCtrl.service.Dimanche_pm_f | date:"HH:mm") || 'Fermé' }}</a></li></ul>															
+			</div>
+		<h4>Description:</h4>    
+		<a href="#" editable-textarea="descServiceAdminCtrl.service.service_description" onaftersave="descServiceAdminCtrl.save(descServiceAdminCtrl.service)" title="Modifier le paramètre">
+            {{descServiceAdminCtrl.service.service_description|| 'empty'}}
+        </a>
+		
+    </div>
+</div>

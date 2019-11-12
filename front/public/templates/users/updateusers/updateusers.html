@@ -1,0 +1,35 @@
+<h2 class="panel-heading-title"><span class="glyphicon glyphicon-pencil"></span> Modifier mon compte</h2>
+<section class="container-fluid app__content">
+		<div class="panel-body">
+			<div class="profil__form">
+				<h3>Cliquez sur l'élement à modifier</h3>
+				<div class="form-group">
+					&nbsp; &nbsp; Pseudo : <a href="#" editable-text="updateuserCtrl.currentuser.user_pseudo" onaftersave="updateuserCtrl.save(updateuserCtrl.currentuser)" e-label="Modifier votre pseudo">{{ updateuserCtrl.currentuser.user_pseudo || 'Non rempli' }}</a>
+				</div>
+				<div class="form-group">
+					&nbsp; &nbsp; Prénom : <a href="#" editable-text="updateuserCtrl.currentuser.firstname" onaftersave="updateuserCtrl.save(updateuserCtrl.currentuser)" e-label="Modifier votre prenom">{{ updateuserCtrl.currentuser.firstname || 'Non rempli' }}</a>
+				</div>
+				<div class="form-group">
+					&nbsp; &nbsp; Nom : <a href="#" editable-text="updateuserCtrl.currentuser.lastname" onaftersave="updateuserCtrl.save(updateuserCtrl.currentuser)" e-label="Modifier votre nom">{{ updateuserCtrl.currentuser.lastname || 'Non rempli' }}</a>
+				</div>
+				<div class="form-group">
+					&nbsp; &nbsp; Mail : <a href="#" editable-text="updateuserCtrl.currentuser.email" onaftersave="updateuserCtrl.save(updateuserCtrl.currentuser)" e-label="Modifier votre mail">{{ updateuserCtrl.currentuser.email || 'Non rempli' }}</a>
+				</div>
+				<div class="form-group">
+					&nbsp; &nbsp; Mot de passe : <a href="#" editable-password="updateuserCtrl.currentuser.password" e-label="Modifier votre mot de passe">Mot de passe</a>
+					&nbsp; &nbsp; Confirmation mot de passe : <a href="#" editable-password="updateuserCtrl.currentuser.password_confirm" onaftersave="updateuserCtrl.savemdp(updateuserCtrl.currentuser)" e-label="Confirmez votre mot de passe">Confirmation</a>
+				</div>
+			</div>
+			<div class="profil__image">
+				<h3>Photo de profil</h3>
+				<div class="form-group">
+					<input type="file" id="photoProfil"  style="background-color: #FFF" />
+				</div>
+				<div class="cropArea" ng-mouseleave="updateuserCtrl.save(updateuserCtrl.currentuser)">
+					<img-crop image="updateuserCtrl.photoTemp" result-image="updateuserCtrl.currentuser.image"></img-crop>
+				</div>
+				<img ng-src="{{updateuserCtrl.currentuser.image}}" class="cropImage" />
+            </div>
+
+		</div>
+</section>

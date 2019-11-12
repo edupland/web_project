@@ -1,0 +1,81 @@
+ <h2 class="panel-heading-title"> <span class="glyphicon glyphicon-tasks">&nbsp;</span>Les Services</h2>
+<section class="container-fluid app__content">
+    <div class="col-md-6">
+	
+	                 <div class=" form-inline">
+					 
+                    <div class="form-group pull-right">
+	 <label for="type">Type de service :</label>
+	 
+	 <select  id="type" ng-model="servicesCtrl.type"  class="form-select" ng-change="servicesCtrl.getservices()">
+		<option value="">Tous</option>
+        <option ng-repeat="option in servicesCtrl.typeServices" value="{{option.service_name_text}}">{{option.service_name_text}}</option>
+    </select></div></div>
+        <div class="cards cards--dashboard">
+            <div class="card card--task card--dashboard"  ng-repeat="service in servicesCtrl.listServices">
+                <article class="card__item">
+                    <div class="card__header">
+                        <h3 class="card__title"> {{service.message}}</h3>
+                  <div class="card__action">
+                            <a class="btn btn-info pull-right"  ng-click="servicesCtrl.description(service.service_id)" title="Avoir plus d'infos">
+                                <span class="glyphicon glyphicon-info-sign"></span></a>&nbsp;
+                        </div>
+                    </div>
+					
+                    <aside class="card__infos">
+                        <dl class="card__info">
+						<dt class="card__info__title">Type</dt>
+						
+                            <dd class="card__info__value" title="Type">
+                                {{service.service_name_text}}
+                            </dd>
+                            
+                        </dl>
+						
+						<dl class="card__info">
+							<dt class="card__info__title">Telephone</dt>
+                            <dd class="card__info__value" title="Tph">
+                                {{service.service_tph}}
+                            </dd>
+                            
+                        </dl>
+						   <dl class="card__info">
+						    <dt class="card__info__title">Adresse</dt>
+                            <dd class="card__info__value" title="Adresse">
+								{{service.service_address}}
+
+                            </dd>
+                           
+                        </dl>
+                    </aside>
+                </article>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="center-block text-center">
+                          <ul uib-pagination total-items="servicesCtrl.page.pageable.totalElements" ng-model="servicesCtrl.page.pageable.numPage" items-per-page="servicesCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="servicesCtrl.page.pageable.totalPages"
+                    ng-click="servicesCtrl.getservices()"></ul>
+                    </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                    <div class="form-group pull-right">
+                        <label for="nbEltUser">Nb éléments :</label>
+                        <div class="form-control">
+                            <select id="nbEltUser" ng-model="servicesCtrl.page.pageable.nbElt" class="form-select" ng-change="servicesCtrl.getservices()" >
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+		
+ <leaflet width="100%" height="480px" id="map-marker" markers="markers" center="osloCenter"></leaflet>
+
+    </div>
+</section>
+

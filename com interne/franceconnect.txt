@@ -1,0 +1,7 @@
+
+
+Voici les informations pour implémenter FranceConnect Particuliers en INTEGRATION sur votre FS :
+
+    Identifiant client : 7d30fe47fea5ff3a89fabd24a1339834ad2f20ee7761ca91186c630186d4de6d
+    Clé secrète : 53c794612ba6bf6e6f81921c02b25d8d2ef3bcfc62287985c25266b8c7eae018
+

@@ -1,0 +1,27 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="addTypeAdminCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-plus-sign"></span> Nouveau type
+    </div>
+    <div class="panel-body">
+        <div uib-alert class="alert-danger" type="danger" ng-if="addTypeAdminCtrl.error">
+            <errors errors="addTypeAdminCtrl.error"></errors>
+        </div>
+        <form id="addtype" role="form" name="addtype" ng-submit="addTypeAdminCtrl.submit()">
+            <div class="form-group">
+                <input type="text" required ng-model="addTypeAdminCtrl.type.name" class="form-control" title="Nom du type" name="nom" placeholder="Nom du type">
+            </div>
+            <div class="form-group">
+                <input type="text" type="textaera" required ng-model="addTypeAdminCtrl.type.color" class="form-control" title="Couleur" name="reponse" placeholder="Couleur de l'icône (parmi celle ci-dessous)">
+				<p>red, darkred, orange, green, darkgreen, blue, purple,darkpurple,cadetblue</p>
+            </div>
+			            <div class="form-group">
+                <input type="text" type="textaera" required ng-model="addTypeAdminCtrl.type.icon" class="form-control" title="icon" name="icon" placeholder="Nom de l'icône">
+				<p>Liste des icônes disponible <a href="https://getbootstrap.com/docs/3.3/components/" target="_blank">ici</a>
+            </div>
+            <div>
+                <button type="submit"  class="btn btn-info center-block">valider</button>
+            </div>
+        </form>
+    </div>
+</div>

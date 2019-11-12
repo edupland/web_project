@@ -1,0 +1,40 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="signupCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-log-in"></span> Inscription
+    </div>
+    <div class="panel-body">
+        <div uib-alert class="alert-danger"  type="danger" ng-if="signupCtrl.signupForm.error">
+            {{signupCtrl.signupForm.error}}
+        </div>
+		<div uib-alert class="alert-danger"  type="danger" ng-if="signupform.confirmPassword.$error.passwordMatch">
+            Les mots de passe ne sont pas identiques
+        </div>
+		<div uib-alert class="alert-danger"  type="danger" ng-if="signupform.Email.$error.email">
+            Erreur Email
+        </div>
+        <form id="signup" name="signupform" role="form" ng-submit="signupCtrl.submit()">
+		    <div class="form-group">
+                <input type="text" required ng-model="signupCtrl.signupForm.pseudo" class="form-control" name="Pseudo" placeholder="Pseudo"/>
+            </div>
+            <div class="form-group">
+                <input type="text" required ng-model="signupCtrl.signupForm.lastname" class="form-control" name="Nom" placeholder="Nom"/>
+            </div>
+            <div class="form-group">
+                <input type="text" required ng-model="signupCtrl.signupForm.firstname" class="form-control" name="Prenom" placeholder="Prénom"/>
+            </div>
+            <div class="form-group">
+                <input type="email" ng-model="signupCtrl.signupForm.email" required class="form-control" name="Email" placeholder="Email"/>
+            </div>
+			<div class="form-group">
+                <input type="password" required ng-model="signupCtrl.signupForm.password" class="form-control" name="Password" placeholder="Mot de passe"/>
+            </div>
+			<div class="form-group">
+				<input type="password" match-password="Password" required name="confirmPassword" ng-model="signupCtrl.signupForm.password_confirm" class="form-control" placeholder="Confirmation du mot de passe"/>
+            </div>
+            <div>
+                <button type="submit"  class="btn btn-info center-block">valider</button>
+            </div>
+        </form>
+    </div>
+    </div>

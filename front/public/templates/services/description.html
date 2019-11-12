@@ -1,0 +1,21 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="descriptionServicesCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-log-in"></span> {{descriptionServicesCtrl.service.message}}
+    </div>
+    <div class="panel-body">
+        <h4>Télèphone:</h4> {{descriptionServicesCtrl.service.service_tph}}
+		<h4>Adresse :</h4> {{descriptionServicesCtrl.service.service_address}}
+		<h4>Mail:</h4> {{descriptionServicesCtrl.service.service_mail}}
+		<h4>Horaire:</h4> 
+		Lundi : <ul><li>{{descriptionServicesCtrl.service.Lundi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Lundi_am_f">- {{descriptionServicesCtrl.service.Lundi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Lundi_pm_o | date:'HH:mm'}}</li></ul>
+		Mardi : <ul><li>{{descriptionServicesCtrl.service.Mardi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Mardi_am_f">- {{descriptionServicesCtrl.service.Mardi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Mardi_pm_o | date:'HH:mm'}}</li></ul>
+		Mercredi : <ul><li>{{descriptionServicesCtrl.service.Mercredi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Mercredi_am_f">- {{descriptionServicesCtrl.service.Mercredi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Mercredi_pm_o | date:'HH:mm'}}</li></ul>
+		Jeudi : <ul><li>{{descriptionServicesCtrl.service.Jeudi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Jeudi_am_f">- {{descriptionServicesCtrl.service.Jeudi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Jeudi_pm_o | date:'HH:mm'}}</li></ul>
+		Vendredi : <ul><li>{{descriptionServicesCtrl.service.Vendredi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Vendredi_am_f">- {{descriptionServicesCtrl.service.Vendredi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Vendredi_pm_o | date:'HH:mm'}}</li></ul>
+		Samedi : <ul><li>{{descriptionServicesCtrl.service.Samedi_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Samedi_am_f">- {{descriptionServicesCtrl.service.Samedi_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Samedi_pm_o | date:'HH:mm'}}</li></ul>
+		Dimanche : <ul><li>{{descriptionServicesCtrl.service.Dimanche_am_o | date:'HH:mm'}} <span ng-if="descriptionServicesCtrl.service.Dimanche_am_f">- {{descriptionServicesCtrl.service.Dimanche_am_f | date:'HH:mm'}}</span></li> <li>{{descriptionServicesCtrl.service.Dimanche_pm_o | date:'HH:mm'}}</li></ul>
+		<h4>Description:</h4>  {{descriptionServicesCtrl.service.service_description | date:'HH:mm'}}
+		
+    </div>
+</div>

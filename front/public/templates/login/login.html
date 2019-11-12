@@ -1,0 +1,22 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="loginCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-log-in"></span> Login
+    </div>
+    <div class="panel-body">
+        <div uib-alert type="danger" class="alert-danger" ng-if="loginCtrl.loginForm.error">{{loginCtrl.loginForm.error}}</div>
+		<form id="login" class="login__form" role="form" ng-submit="loginCtrl.authenticate()">
+			<div class="form-group">
+				<input type="text" required ng-model="loginCtrl.loginForm.username" class="form-control" name="username" placeholder="pseudo"/>
+			</div>
+			<div class="form-group">
+				<input type="password" required ng-model="loginCtrl.loginForm.password" class="form-control" name="password" placeholder="password"/>
+			</div>
+				<a  ng-click="loginCtrl.resetpwd()">J'ai perdu mon mot de passe.</a></br>
+				<a  ng-click="loginCtrl.mail()">Je n'ai pas reçu le mail de confirmation.</a>
+			<div class="login__submit">
+				<button type="submit" class="btn btn-info center-block">valider</button>
+			</div>
+		</form>
+    </div>
+</div>

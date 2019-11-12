@@ -1,0 +1,78 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="listTypeServiceAdminCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-th-list"></span> Administration Types de services
+		    <div class="heading__action pull-right">
+        <button class="btn btn-info btn-sm" ng-click="listTypeServiceAdminCtrl.addtype()"><span class="glyphicon glyphicon-plus-sign"></span>Ajouter</button>
+    </div>
+    </div>
+    <div class="panel-body">
+<section class="content">
+    <div uib-alert type="danger" class="alert-danger" ng-if="listTypeServiceAdminCtrl.error">{{listTypeServiceAdminCtrl.error}}</div>
+    <div uib-alert type="success" class="alert-success" ng-if="listTypeServiceAdminCtrl.suprsuccess">{{listTypeServiceAdminCtrl.suprsuccess}}</div>
+    <div class="panel">
+        <div class="panel-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Nom du Type</th>
+					<th>Couleur</th>
+					<th>Nom de l'icone</th>
+                    <th>Supprimer</th>
+                   
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="type in listTypeServiceAdminCtrl.listServiceType">
+                    <td>
+                        <a href="#" editable-textarea="type.service_name_text" onaftersave="listTypeServiceAdminCtrl.saveParameter(type)" title="Modifier le paramètre">
+                            {{type.service_name_text}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" editable-textarea="type.service_name_markercolor" onaftersave="listTypeServiceAdminCtrl.saveParameter(type)" title="Modifier le paramètre">
+                           {{type.service_name_markercolor}}
+                        </a>
+                    </td>
+					   <td>
+                        <a href="#" editable-textarea="type.service_name_icon" onaftersave="listTypeServiceAdminCtrl.saveParameter(type)" title="Modifier le paramètre">
+                           {{type.service_name_icon}}
+                        </a>
+                    </td>
+                    <td>
+                        <a ng-click="listTypeServiceAdminCtrl.delete(type)" title="Supprimer le type">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+				     <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div class="center-block text-center">
+                    <ul uib-pagination total-items="listTypeServiceAdminCtrl.page.pageable.totalElements" ng-model="listTypeServiceAdminCtrl.page.pageable.numPage" items-per-page="listTypeServiceAdminCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" boundary-links="true" rotate="false" num-pages="listTypeServiceAdminCtrl.page.pageable.totalPages"
+                    ng-click="listTypeServiceAdminCtrl.gettype()"></ul>
+                  </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                  <div class="form-group pull-right">
+                    <label for="nbEltUser">Nb éléments :</label>
+                    <div class="form-control">
+                      <select id="nbEltUser" ng-model="listTypeServiceAdminCtrl.page.pageable.nbElt" class="form-select" ng-change="listTypeServiceAdminCtrl.gettype()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+            </table>
+        </div>
+    </div>
+</section></div></div>

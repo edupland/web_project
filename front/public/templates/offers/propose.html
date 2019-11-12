@@ -1,0 +1,32 @@
+<div class="panel panel-info">
+    <span class="close glyphicon glyphicon-remove-sign" ng-click="proposeOffersCtrl.cancel()"></span>
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-pencil"></span> {{proposeOffersCtrl.getoffer_title}}
+        Proposition d'annonce
+    </div>
+    <div class="panel-body">
+        <div uib-alert class="alert-danger" type="danger" ng-if="proposeform.Email.$error.email">
+            Erreur email
+        </div>
+        <form name="proposeform" role="form" ng-submit="proposeOffersCtrl.submit()">
+            <div class="form-group">
+                <input type="text" required ng-model="proposeOffersCtrl.offers.title" class=" form-control" name="Titre" placeholder="Titre"/>
+            </div>
+            <div class="form-group">
+                <input type="text" required ng-model="proposeOffersCtrl.offers.description" class="form-control" name="Description" placeholder="Description"/>
+            </div>
+            <div class="form-group">
+                <input type="number" required ng-model="proposeOffersCtrl.offers.price" class="form-control" name="Prix" placeholder="Prix"/>
+            </div>
+            <div class="form-group">
+                <input type="email" required ng-model="proposeOffersCtrl.offers.email" class="form-control" name="Email" placeholder="Email"/>
+            </div>
+            <div class="form-group">
+                <input type="tel" required ng-model="proposeOffersCtrl.offers.tph" class="form-control" name="Telephone" placeholder="Téléphone"/>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-info center-block">Valider</button>
+            </div>
+        </form>
+    </div>
+</div>

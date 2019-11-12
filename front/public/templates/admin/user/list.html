@@ -1,0 +1,108 @@
+<header class="heading nav nav--subNav">
+  <h2 class="heading__title pull-left">Liste des utilisateurs</h2>
+</header>
+<section class="content">
+  <div class="panel">
+    <div class="panel-body">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Image</th>
+			 <th>Supprimer l'image</th>
+			 <th>Pseudo</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Catégorie</th>
+			<th>Etat du compte</th>
+            <th>Bannir/Débannir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in listUserAdminCtrl.users">
+            <td>
+              <img ng-if="user.image" class="crop" ng-src="{{user.image}}" alt="{{user.firstname}}">
+				<span ng-if="!user.image" class="glyphicon glyphicon-user"></span>
+            </td>
+
+			<td>
+			<a ng-click="user.image='';listUserAdminCtrl.saveUser(user)">
+                <span class="glyphicon glyphicon-trash"></span>
+              </a>
+			</td>
+			            <td>
+              <a href="#" editable-text="user.user_pseudo" onaftersave="listUserAdminCtrl.saveUser(user)" >
+                {{user.user_pseudo}}
+              </a>
+            </td>
+            <td>
+              <a href="#" editable-text="user.lastname" onaftersave="listUserAdminCtrl.saveUser(user)" >
+                {{user.lastname}}
+              </a>
+            </td>
+            <td>
+			<a href="#" editable-text="user.firstname" onaftersave="listUserAdminCtrl.saveUser(user)" >
+              {{user.firstname}}
+			   </a>
+            </td>
+            <td>
+			<a href="#" editable-text="user.email" onaftersave="listUserAdminCtrl.saveUser(user)" >
+              {{user.email}}
+			   </a>
+            </td>
+			<td ng-if=" user.id !== appCtrl.currentuser.id">
+			  <select name="category" ng-model="user.category_id"  ng-change="listUserAdminCtrl.saveUser(user)">
+				<option ng-repeat="option in listUserAdminCtrl.usercat" value="{{option.category_id}}">{{option.category_name}}</option>
+			</select>
+			
+            </td>
+			<td ng-if=" user.id == appCtrl.currentuser.id">
+				{{user.category_name}}
+            </td>
+			<td>
+			<p ng-if="user.valid==0">Compte non validé</p>
+			<p ng-if="user.valid==1">Compte valide</p>
+			<p ng-if="user.valid==-1">Compte banni</p>
+			</td>
+            <td ng-if="user.valid==-1">
+			<a ng-click="user.valid=1;listUserAdminCtrl.saveUser(user)">
+                <span class="glyphicon glyphicon-repeat"></span>
+              </a>
+            </td>
+			<td ng-if="user.valid==1 && user.id !== appCtrl.currentuser.id">
+						 <a ng-click="user.valid=-1;listUserAdminCtrl.saveUser(user)">
+                <span class="glyphicon glyphicon-lock"></span>
+              </a>
+			</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="8">
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                  <div class="center-block text-center">
+                    <ul uib-pagination total-items="listUserAdminCtrl.page.pageable.totalElements" ng-model="listUserAdminCtrl.page.pageable.numPage" items-per-page="listUserAdminCtrl.page.pageable.nbElt" max-size="5" class="pagination-sm" boundary-links="true" rotate="false" num-pages="listUserAdminCtrl.page.pageable.totalPages"
+                    ng-click="listUserAdminCtrl.getuser()"></ul>
+                  </div>
+                </div>
+                <div class="col-md-3 form-inline">
+                  <div class="form-group pull-right">
+                    <label for="nbEltUser">Nb éléments :</label>
+                    <div class="form-control">
+                      <select id="nbEltUser" ng-model="listUserAdminCtrl.page.pageable.nbElt" class="form-select" ng-change="listUserAdminCtrl.getuser()">
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</section>

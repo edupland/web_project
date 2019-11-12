@@ -1,0 +1,114 @@
+<header class="nav nav--main">
+    <a class="nav__brand" ui-sref="app.home">
+        <img src="./static/images/logo.png" alt="logo" width=50 height=50>VIEUX 3000
+    </a>
+    <ul class="nav__links">
+        <li class="nav__link">
+            <a ui-sref="app.home">
+                Accueil
+            </a>
+        </li>
+		<li class="nav__link">
+            <a ui-sref="app.services">
+                Cartes des services
+            </a>
+        </li>
+        <li class="nav__link dropdown">
+            <a class="dropdown-toggle" role="dropdown" data-toggle="dropdown"  aria-expanded="true" id="menuDropdown">
+                Menu
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+                <li>
+                    <a ui-sref="app.faq">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.offers">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>Petites annnonces</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav__link dropdown" ng-if="appCtrl.currentuser.admin">
+            <a class="dropdown-toggle" role="dropdown" data-toggle="dropdown"  aria-expanded="true" id="projectsDropdown">
+                Administrer
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="projectsDropdown">
+                <li>
+                    <a ui-sref="app.adminuser">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>Les Utilisateurs</span>
+                    </a>
+                </li>
+                <li >
+                    <a ui-sref="app.adminservices">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>Les Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.adminfaq">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>Les FAQ</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.adminoffers">
+                        <span class="glyphicon glyphicon-folder-open"></span>&nbsp;
+                        <span>Les Petites annonces</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="nav__links nav__links--right" ng-if="appCtrl.currentuser">
+        <li class="nav__link nav__link--right dropdown" >
+            <a class="dropdown-toggle account" data-toggle="dropdown" id="accountDropdown" aria-expanded="true">
+                <span ng-if="!image" class="glyphicon glyphicon-user"></span>
+                <img ng-if="image" id="img" class="crop crop--nav" ng-src="{{image}}" alt="{{appCtrl.currentuser.user_pseudo}}">
+                {{user_pseudo}}
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu pull-right" aria-labelledby="accountDropdown">
+                <li>
+                    <a ui-sref="app.updateuser">
+                        <span class="glyphicon glyphicon-cog"></span>
+                        <span>Profil</span>
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="app.mp">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <span>Messagerie</span>
+                    </a>
+                </li>
+                <li>
+                    <a ng-click="appCtrl.logout()">
+                        <span class="glyphicon glyphicon-log-out"></span>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+	</ul>
+	<ul class="nav__links nav__links--right" ng-if="!appCtrl.currentuser">
+		<li  class="nav__link nav__link--right" >
+            <button class="btn btn-info btn-sm" ng-click="appCtrl.signup()"><span class="glyphicon glyphicon-pencil"></span>
+                Inscription
+             </button >
+        </li>
+		<li  class="nav__link nav__link--right" >
+            <button class="btn btn-info btn-sm" ng-click="appCtrl.login()"><span class="glyphicon glyphicon-log-in"></span>
+                Connexion
+            </button >
+        </li>
+    </ul>
+</header>
+<div growl></div>
+<div class="app__container" ui-view="">
+</div>
